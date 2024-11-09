@@ -51,7 +51,7 @@ export default defineType({
 
     defineField({
       name: 'audios',
-      title: 'Audios',
+      title: 'Background Audios',
       description: '8 files max',
       type: 'array',
       of: [{type: 'file'}],
@@ -73,6 +73,7 @@ export default defineType({
               title: 'Person',
               type: 'reference',
               to: {type: 'person'},
+              validation: (Rule) => Rule.required(),
             },
             {
               name: 'role',
@@ -84,15 +85,24 @@ export default defineType({
                   name: 'es',
                   title: 'Español',
                   type: 'string',
+                  validation: (Rule) => Rule.required(),
                 },
                 {
                   name: 'en',
                   title: 'English',
                   type: 'string',
+                  validation: (Rule) => Rule.required(),
                 },
               ],
+              validation: (Rule) => Rule.required(),
             },
           ],
+          preview: {
+            select: {
+              title: 'person.name',
+              subtitle: 'role.en',
+            },
+          },
         },
       ],
     }),
@@ -116,20 +126,30 @@ export default defineType({
                   name: 'es',
                   title: 'Español',
                   type: 'string',
+                  validation: (Rule) => Rule.required(),
                 },
                 {
                   name: 'en',
                   title: 'English',
                   type: 'string',
+                  validation: (Rule) => Rule.required(),
                 },
               ],
+              validation: (Rule) => Rule.required(),
             },
             {
               name: 'url',
               title: 'URL',
               type: 'string',
+              validation: (Rule) => Rule.required(),
             },
           ],
+          preview: {
+            select: {
+              title: 'text.en',
+              subtitle: 'url',
+            },
+          },
         },
       ],
     }),
