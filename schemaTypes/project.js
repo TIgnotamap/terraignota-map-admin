@@ -8,7 +8,21 @@ export default defineType({
     defineField({
       name: 'title',
       titile: 'Title',
-      type: 'string',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'es',
+          title: 'Español',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'en',
+          title: 'English',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -16,7 +30,7 @@ export default defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'title',
+        source: 'title.en',
         maxLength: 96,
       },
       validation: (Rule) => Rule.required(),
@@ -58,4 +72,9 @@ export default defineType({
       ],
     }),
   ],
+  preview: {
+    select: {
+      title: 'title.en',
+    },
+  },
 })
