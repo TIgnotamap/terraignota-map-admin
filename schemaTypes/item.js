@@ -283,7 +283,6 @@ export default defineType({
           },
         },
       ],
-      // readOnly: ({document}) => document?.hideCredits === true,
     }),
 
     defineField({
