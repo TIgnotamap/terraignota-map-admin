@@ -7,8 +7,14 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'name',
-      title: 'Name',
+      name: 'firstName',
+      title: 'First Name',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'lastName',
+      title: 'Last Name',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
@@ -48,4 +54,16 @@ export default defineType({
       type: 'url',
     }),
   ],
+  preview: {
+    select: {
+      firstName: 'firstName',
+      lastName: 'lastName',
+    },
+    prepare(selection) {
+      const {firstName, lastName} = selection
+      return {
+        title: `${firstName} ${lastName}`,
+      }
+    },
+  },
 })
