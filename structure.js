@@ -53,6 +53,31 @@ export const structure = (S) =>
                 ),
             ]),
         ),
+
+      S.listItem()
+        .title('Tags')
+        .icon(() => '🏷️')
+        .schemaType('tag')
+        .child(S.documentTypeList('tag').title('Tags').filter('_type == $type', {type: 'tag'})),
+
+      S.listItem()
+        .title('References')
+        .icon(() => '📚')
+        .schemaType('referenceMaterial')
+        .child(
+          S.documentTypeList('referenceMaterial')
+            .title('References')
+            .filter('_type == $type', {type: 'referenceMaterial'}),
+        ),
+
+      S.listItem()
+        .title('People')
+        .icon(() => '👤')
+        .schemaType('person')
+        .child(
+          S.documentTypeList('person').title('People').filter('_type == $type', {type: 'person'}),
+        ),
+
       S.listItem()
         .title('Exhibitions')
         .icon(() => '🏛️')
@@ -62,18 +87,6 @@ export const structure = (S) =>
             .title('Exhibitions')
             .filter('_type == $type', {type: 'exhibition'}),
         ),
-      S.listItem()
-        .title('People')
-        .icon(() => '👤')
-        .schemaType('person')
-        .child(
-          S.documentTypeList('person').title('People').filter('_type == $type', {type: 'person'}),
-        ),
-      S.listItem()
-        .title('Tags')
-        .icon(() => '🏷️')
-        .schemaType('tag')
-        .child(S.documentTypeList('tag').title('Tags').filter('_type == $type', {type: 'tag'})),
       S.listItem()
         .title('Settings')
         .icon(() => '⚙️')
