@@ -137,8 +137,8 @@ export default defineType({
           icon: () => '📜',
           fields: [
             {
-              name: 'prop',
-              title: 'Property',
+              name: 'propName',
+              title: 'Property Name',
               type: 'object',
               options: {columns: 2},
               fields: [
@@ -155,19 +155,52 @@ export default defineType({
               ],
             },
             {
-              name: 'detail',
-              title: 'Detail',
+              name: 'propValue',
+              title: 'Property Value/s',
               type: 'object',
               fields: [
                 {
-                  name: 'es',
-                  title: 'Español',
-                  type: 'text',
+                  name: 'shortValuesList',
+                  title: 'Short Value/s',
+                  type: 'array',
+                  of: [
+                    {
+                      name: 'shortValue',
+                      title: 'Value',
+                      type: 'object',
+                      fields: [
+                        {
+                          name: 'es',
+                          title: 'Español',
+                          type: 'string',
+                          validation: (rule) => rule.max(50),
+                        },
+                        {
+                          name: 'en',
+                          title: 'English',
+                          type: 'string',
+                          validation: (rule) => rule.max(50),
+                        },
+                      ],
+                    },
+                  ],
                 },
                 {
-                  name: 'en',
-                  title: 'English',
-                  type: 'text',
+                  name: 'longValue',
+                  title: 'Long Value',
+                  type: 'object',
+                  fields: [
+                    {
+                      name: 'es',
+                      title: 'Español',
+                      type: 'text',
+                    },
+                    {
+                      name: 'en',
+                      title: 'English',
+                      type: 'text',
+                    },
+                  ],
                 },
               ],
             },
