@@ -324,49 +324,13 @@ export default defineType({
       type: 'array',
       of: [
         {
-          name: 'ref',
+          name: 'reference',
           title: 'Reference',
-          type: 'object',
-          fields: [
-            {
-              name: 'title',
-              title: 'Title',
-              type: 'object',
-              fields: [
-                {
-                  name: 'es',
-                  title: 'Español',
-                  type: 'string',
-                  validation: (Rule) => Rule.required(),
-                },
-                {
-                  name: 'en',
-                  title: 'English',
-                  type: 'string',
-                  validation: (Rule) => Rule.required(),
-                },
-              ],
-            },
-            {
-              name: 'authors',
-              title: 'Author/s',
-              type: 'array',
-              of: [{type: 'reference', to: {type: 'person'}}],
-            },
-            {
-              name: 'url',
-              title: 'URL',
-              type: 'url',
-            },
-            {
-              name: 'file',
-              title: 'File',
-              type: 'file',
-            },
-          ],
+          type: 'reference',
+          to: {type: 'referenceMaterial'},
           preview: {
             select: {
-              title: 'title.en',
+              title: 'title',
             },
           },
         },
