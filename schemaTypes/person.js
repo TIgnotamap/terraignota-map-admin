@@ -19,9 +19,32 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'participant',
+      title: 'Participant',
+      description: 'Participated in a project',
+      type: 'boolean',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'projectAuthor',
+      title: 'Project Author',
+      description: 'Wrote an entry for a project item',
+      type: 'boolean',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'referenceAuthor',
+      title: 'Reference Author',
+      description: 'Created a refrence material piece',
+      type: 'boolean',
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
       name: 'activity',
       title: 'Activity',
       type: 'array',
+      description: 'only 1 activity per entry, por favor!',
       of: [
         {
           type: 'object',
