@@ -9,17 +9,20 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'author',
       title: 'Author',
       type: 'reference',
       to: {type: 'person'},
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'date',
       title: 'YearDate',
       type: 'date',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'apaReference',
@@ -27,6 +30,7 @@ export default defineType({
       description:
         'APA Style Reference https://apastyle.apa.org/style-grammar-guidelines/references',
       type: 'blockContent',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'files',
