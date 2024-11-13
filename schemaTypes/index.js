@@ -5,5 +5,15 @@ import item from './item'
 import tag from './tag'
 import exhibition from './exhibition'
 import settings from './settings'
+import referenceMaterial from './referenceMaterial'
 
-export const schemaTypes = [blockContent, person, project, item, tag, exhibition, settings]
+export const schemaTypes = [
+  blockContent,
+  person,
+  project,
+  item,
+  tag,
+  exhibition,
+  referenceMaterial,
+  settings,
+]
