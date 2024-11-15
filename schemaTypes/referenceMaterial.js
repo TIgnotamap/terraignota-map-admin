@@ -12,10 +12,10 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'author',
-      title: 'Author',
-      type: 'reference',
-      to: {type: 'person'},
+      name: 'authors',
+      title: 'Author/s',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'person'}}],
       validation: (Rule) => Rule.required(),
     }),
     defineField({
