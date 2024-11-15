@@ -88,7 +88,7 @@ export const structure = (S) =>
             .filter('_type == $type', {type: 'exhibition'}),
         ),
       S.listItem()
-        .title('Settings')
+        .title('Site Settings')
         .icon(() => '⚙️')
         .schemaType('settings')
         .child(
