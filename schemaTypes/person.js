@@ -10,14 +10,19 @@ export default defineType({
       name: 'firstName',
       title: 'First Name',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'lastName',
       title: 'Last Name',
       type: 'string',
-      validation: (Rule) => Rule.required(),
     }),
+
+    defineField({
+      name: 'pseudonym',
+      title: 'Pseudonym',
+      type: 'string',
+    }),
+
     defineField({
       name: 'participant',
       title: 'Participant',
@@ -81,11 +86,17 @@ export default defineType({
     select: {
       firstName: 'firstName',
       lastName: 'lastName',
+      pseudonym: 'pseudonym',
     },
     prepare(selection) {
-      const {firstName, lastName} = selection
+      const {pseudonym, firstName, lastName} = selection
+      if (!firstName && !lastName && !pseudonym) {
+        return {
+          title: 'Unknown',
+        }
+      }
       return {
-        title: `${firstName} ${lastName}`,
+        title: `${firstName ? `${firstName} ` : ''} ${lastName ? `${lastName}` : ''} ${pseudonym ? `${pseudonym} ` : ''}`,
       }
     },
   },
