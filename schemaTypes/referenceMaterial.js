@@ -24,6 +24,9 @@ export default defineType({
       title: 'Date',
       description: 'Choose random day/month if unspecified',
       type: 'date',
+      options: {
+        dateFormat: 'YYYY-MM-DD',
+      },
       validation: (Rule) => Rule.required(),
     }),
 

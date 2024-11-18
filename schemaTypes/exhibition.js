@@ -78,7 +78,7 @@ export default defineType({
       title: 'Date',
       type: 'date',
       options: {
-        dateFormat: 'DD-MM-YYYY',
+        dateFormat: 'YYYY-MM-DD',
       },
       validation: (Rule) => Rule.required(),
     }),
