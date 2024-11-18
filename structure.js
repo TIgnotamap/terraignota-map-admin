@@ -79,6 +79,16 @@ export const structure = (S) =>
         ),
 
       S.listItem()
+        .title('Organizations')
+        .icon(() => '👥')
+        .schemaType('organization')
+        .child(
+          S.documentTypeList('organization')
+            .title('Organizations')
+            .filter('_type == $type', {type: 'organization'}),
+        ),
+
+      S.listItem()
         .title('Exhibitions')
         .icon(() => '🏛️')
         .schemaType('exhibition')
