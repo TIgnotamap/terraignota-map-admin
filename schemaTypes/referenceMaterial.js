@@ -18,12 +18,32 @@ export default defineType({
       of: [{type: 'reference', to: [{type: 'person'}, {type: 'organization'}]}],
       validation: (Rule) => Rule.required(),
     }),
+
     defineField({
       name: 'date',
-      title: 'YearDate',
+      title: 'Date',
+      description: 'Choose random day/month if unspecified',
       type: 'date',
       validation: (Rule) => Rule.required(),
     }),
+
+    defineField({
+      name: 'dateDisplay',
+      title: 'Date Display',
+      description: 'How date will be displayed on the site',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+      options: {
+        list: [
+          {title: 'YYYY', value: 'YYYY'},
+          {title: 'YYYY-MM', value: 'YYYY-MM'},
+          {title: 'YYYY-MM-DD', value: 'YYYY-MM-DD'},
+        ],
+        layout: 'radio',
+        direction: 'horizontal',
+      },
+    }),
+
     defineField({
       name: 'apaReference',
       title: 'APA Reference',
