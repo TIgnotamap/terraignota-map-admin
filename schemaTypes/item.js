@@ -451,7 +451,7 @@ export default defineType({
           name: 'authors',
           title: 'Author/s',
           type: 'array',
-          of: [{type: 'reference', to: {type: 'person'}}],
+          of: [{type: 'reference', to: [{type: 'person'}, {type: 'organization'}]}],
         }),
       ],
       hidden: ({document}) => !document?.template || document?.template === '3',
@@ -478,10 +478,10 @@ export default defineType({
           type: 'object',
           fields: [
             {
-              name: 'person',
-              title: 'Person',
+              name: 'subject',
+              title: 'Subject',
               type: 'reference',
-              to: {type: 'person'},
+              to: [{type: 'person'}, {type: 'organization'}],
               validation: (Rule) => Rule.required(),
             },
             {

@@ -15,7 +15,7 @@ export default defineType({
       name: 'authors',
       title: 'Author/s',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'person'}}],
+      of: [{type: 'reference', to: [{type: 'person'}, {type: 'organization'}]}],
       validation: (Rule) => Rule.required(),
     }),
     defineField({

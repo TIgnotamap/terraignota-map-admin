@@ -69,10 +69,10 @@ export default defineType({
           type: 'object',
           fields: [
             {
-              name: 'person',
-              title: 'Person',
+              name: 'subject',
+              title: 'Subject',
               type: 'reference',
-              to: {type: 'person'},
+              to: [{type: 'person'}, {type: 'organization'}],
               validation: (Rule) => Rule.required(),
             },
             {
