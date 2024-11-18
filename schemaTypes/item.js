@@ -36,6 +36,16 @@ export default defineType({
     }),
 
     defineField({
+      name: 'date',
+      title: 'Date',
+      type: 'date',
+      options: {
+        dateFormat: 'DD-MM-YYYY',
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
       name: 'tags',
       title: 'Tags',
       type: 'array',
@@ -49,9 +59,9 @@ export default defineType({
       options: {
         list: [
           {title: 'None', value: '0'},
-          {title: 'Roca', value: '1'},
-          {title: 'Oscilador', value: '2'},
-          {title: 'Perpectiva', value: '3'},
+          {title: 'Rock', value: '1'},
+          {title: 'Oscillator', value: '2'},
+          {title: 'Perpective', value: '3'},
         ],
         layout: 'radio',
         direction: 'horizontal',
@@ -63,13 +73,15 @@ export default defineType({
       name: 'location',
       title: 'Location',
       type: 'string',
+      hidden: ({document}) => !document?.template,
     }),
 
     defineField({
       name: 'name',
       title: 'Name',
       type: 'string',
-      hidden: ({document}) => document?.template === '2' || document?.template === '3',
+      hidden: ({document}) =>
+        !document?.template || document?.template === '2' || document?.template === '3',
     }),
 
     defineField({
@@ -78,6 +90,7 @@ export default defineType({
       type: 'number',
       fieldset: 'coordinates',
       validation: (Rule) => Rule.required(),
+      hidden: ({document}) => !document?.template,
     }),
 
     defineField({
@@ -86,6 +99,7 @@ export default defineType({
       type: 'number',
       fieldset: 'coordinates',
       validation: (Rule) => Rule.required(),
+      hidden: ({document}) => !document?.template,
     }),
 
     defineField({
@@ -93,6 +107,7 @@ export default defineType({
       title: 'GPS',
       type: 'string',
       validation: (Rule) => Rule.required(),
+      hidden: ({document}) => !document?.template,
     }),
 
     defineField({
@@ -100,7 +115,7 @@ export default defineType({
       title: 'L',
       type: 'number',
       fieldset: 'dimensions',
-      hidden: ({document}) => document?.template === '3',
+      hidden: ({document}) => !document?.template || document?.template === '3',
     }),
 
     defineField({
@@ -108,7 +123,8 @@ export default defineType({
       title: 'W',
       type: 'number',
       fieldset: 'dimensions',
-      hidden: ({document}) => document?.template === '2' || document?.template === '3',
+      hidden: ({document}) =>
+        !document?.template || document?.template === '2' || document?.template === '3',
     }),
 
     defineField({
@@ -116,7 +132,8 @@ export default defineType({
       title: 'H',
       type: 'number',
       fieldset: 'dimensions',
-      hidden: ({document}) => document?.template === '2' || document?.template === '3',
+      hidden: ({document}) =>
+        !document?.template || document?.template === '2' || document?.template === '3',
     }),
 
     defineField({
@@ -124,7 +141,183 @@ export default defineType({
       title: 'Kg',
       type: 'number',
       fieldset: 'dimensions',
-      hidden: ({document}) => document?.template === '2' || document?.template === '3',
+      hidden: ({document}) =>
+        !document?.template || document?.template === '2' || document?.template === '3',
+    }),
+
+    defineField({
+      name: 'rockProperties',
+      title: 'Rock Properties',
+      type: 'object',
+      fields: [
+        {
+          name: 'type',
+          title: 'Type',
+          type: 'object',
+          fields: [
+            {
+              name: 'es',
+              title: 'Español',
+              type: 'string',
+            },
+            {
+              name: 'en',
+              title: 'English',
+              type: 'string',
+            },
+          ],
+          options: {columns: 2},
+        },
+        {
+          name: 'class',
+          title: 'Class',
+          type: 'object',
+          fields: [
+            {
+              name: 'es',
+              title: 'Español',
+              type: 'string',
+            },
+            {
+              name: 'en',
+              title: 'English',
+              type: 'string',
+            },
+          ],
+          options: {columns: 2},
+        },
+        {
+          name: 'texture',
+          title: 'Texture',
+          type: 'object',
+          fields: [
+            {
+              name: 'es',
+              title: 'Español',
+              type: 'string',
+            },
+            {
+              name: 'en',
+              title: 'English',
+              type: 'string',
+            },
+          ],
+          options: {columns: 2},
+        },
+        {
+          name: 'color',
+          title: 'Color',
+          type: 'object',
+          fields: [
+            {
+              name: 'es',
+              title: 'Español',
+              type: 'string',
+            },
+            {
+              name: 'en',
+              title: 'English',
+              type: 'string',
+            },
+          ],
+          options: {columns: 2},
+        },
+        {
+          name: 'composition',
+          title: 'Composition',
+          type: 'object',
+          fields: [
+            {
+              name: 'es',
+              title: 'Español',
+              type: 'string',
+            },
+            {
+              name: 'en',
+              title: 'English',
+              type: 'string',
+            },
+          ],
+          options: {columns: 2},
+        },
+        {
+          name: 'genesis',
+          title: 'Genesis',
+          type: 'object',
+          fields: [
+            {
+              name: 'es',
+              title: 'Español',
+              type: 'text',
+            },
+            {
+              name: 'en',
+              title: 'English',
+              type: 'text',
+            },
+          ],
+          options: {columns: 2},
+        },
+        {
+          name: 'depth',
+          title: 'Depth',
+          type: 'object',
+          fields: [
+            {
+              name: 'es',
+              title: 'Español',
+              type: 'string',
+            },
+            {
+              name: 'en',
+              title: 'English',
+              type: 'string',
+            },
+          ],
+          options: {columns: 2},
+        },
+        {
+          name: 'age',
+          title: 'Age',
+          type: 'object',
+          fields: [
+            {
+              name: 'es',
+              title: 'Español',
+              type: 'string',
+            },
+            {
+              name: 'en',
+              title: 'English',
+              type: 'string',
+            },
+          ],
+          options: {columns: 2},
+        },
+        {
+          name: 'physiography',
+          title: 'Physiography',
+          type: 'object',
+          fields: [
+            {
+              name: 'es',
+              title: 'Español',
+              type: 'text',
+            },
+            {
+              name: 'en',
+              title: 'English',
+              type: 'text',
+            },
+          ],
+          options: {columns: 2},
+        },
+      ],
+      hidden: ({document}) =>
+        !document?.template ||
+        document?.template === '0' ||
+        document?.template === '2' ||
+        document?.template === '3',
     }),
 
     defineField({
@@ -213,7 +406,11 @@ export default defineType({
           },
         },
       ],
-      hidden: ({document}) => document?.template === '2' || document?.template === '3',
+      hidden: ({document}) =>
+        !document?.template ||
+        document?.template === '1' ||
+        document?.template === '2' ||
+        document?.template === '3',
     }),
 
     defineField({
@@ -232,7 +429,7 @@ export default defineType({
           type: 'file',
         }),
       ],
-      hidden: ({document}) => document?.template === '1',
+      hidden: ({document}) => !document?.template || document?.template === '1',
     }),
 
     defineField({
@@ -257,7 +454,7 @@ export default defineType({
           of: [{type: 'reference', to: {type: 'person'}}],
         }),
       ],
-      hidden: ({document}) => document?.template === '3',
+      hidden: ({document}) => !document?.template || document?.template === '3',
     }),
 
     defineField({
@@ -268,7 +465,7 @@ export default defineType({
       options: {
         layout: 'grid',
       },
-      hidden: ({document}) => document?.template === '3',
+      hidden: ({document}) => !document?.template || document?.template === '3',
     }),
 
     defineField({
@@ -316,6 +513,7 @@ export default defineType({
           },
         },
       ],
+      hidden: ({document}) => !document?.template,
     }),
 
     defineField({
@@ -335,7 +533,7 @@ export default defineType({
           },
         },
       ],
-      hidden: ({document}) => document?.template === '3',
+      hidden: ({document}) => !document?.template || document?.template === '3',
     }),
 
     defineField({
@@ -379,7 +577,7 @@ export default defineType({
           },
         },
       ],
-      hidden: ({document}) => document?.template === '3',
+      hidden: ({document}) => !document?.template || document?.template === '3',
     }),
 
     defineField({
@@ -404,17 +602,7 @@ export default defineType({
         collapsed: true,
         columns: 2,
       },
-      hidden: ({document}) => document?.template === '3',
-    }),
-
-    defineField({
-      name: 'date',
-      title: 'Date',
-      type: 'date',
-      options: {
-        dateFormat: 'DD-MM-YYYY',
-      },
-      validation: (Rule) => Rule.required(),
+      hidden: ({document}) => !document?.template || document?.template === '3',
     }),
   ],
   preview: {
