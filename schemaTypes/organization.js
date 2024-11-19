@@ -76,7 +76,14 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'name.en',
+      nameEn: 'name.en',
+      nameEs: 'name.es',
+    },
+    prepare({nameEn, nameEs}) {
+      const title = nameEn || nameEs
+      return {
+        title: title || 'Unknown',
+      }
     },
   },
 })
