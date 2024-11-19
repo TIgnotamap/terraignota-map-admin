@@ -507,8 +507,23 @@ export default defineType({
           ],
           preview: {
             select: {
-              title: 'person.name',
+              org: 'subject.name',
+              firstName: 'subject.firstName',
+              lastName: 'subject.lastName',
+              pseudonym: 'subject.pseudonym',
               subtitle: 'role.en',
+            },
+            prepare(selection) {
+              const {org, pseudonym, firstName, lastName} = selection
+              if (!org && !firstName && !lastName && !pseudonym) {
+                return {
+                  title: 'Unknown',
+                }
+              }
+              return {
+                title: `${org ? `${org} ` : ''} ${firstName ? `${firstName} ` : ''} ${lastName ? `${lastName}` : ''} ${pseudonym ? `${pseudonym} ` : ''}`,
+                subtitle: selection.subtitle,
+              }
             },
           },
         },
