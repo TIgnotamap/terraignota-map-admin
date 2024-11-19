@@ -72,14 +72,40 @@ export default defineType({
     defineField({
       name: 'location',
       title: 'Location',
-      type: 'string',
+      type: 'object',
+      options: {columns: 2},
+      fields: [
+        {
+          name: 'es',
+          title: 'Español',
+          type: 'string',
+        },
+        {
+          name: 'en',
+          title: 'English',
+          type: 'string',
+        },
+      ],
       hidden: ({document}) => !document?.template,
     }),
 
     defineField({
       name: 'name',
       title: 'Name',
-      type: 'string',
+      type: 'object',
+      options: {columns: 2},
+      fields: [
+        {
+          name: 'es',
+          title: 'Español',
+          type: 'string',
+        },
+        {
+          name: 'en',
+          title: 'English',
+          type: 'string',
+        },
+      ],
       hidden: ({document}) =>
         !document?.template || document?.template === '2' || document?.template === '3',
     }),
