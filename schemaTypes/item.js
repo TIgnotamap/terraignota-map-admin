@@ -426,8 +426,7 @@ export default defineType({
           ],
           preview: {
             select: {
-              title: 'prop.en',
-              subtitle: 'detail.en',
+              title: 'propName.en',
             },
           },
         },
