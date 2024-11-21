@@ -642,6 +642,14 @@ export default defineType({
       },
       hidden: ({document}) => !document?.template || document?.template === '3',
     }),
+
+    defineField({
+      name: 'isHightlighted',
+      title: 'Highlight',
+      type: 'boolean',
+      initialValue: false,
+      hidden: ({document}) => !document?.template || document?.template === '3',
+    }),
   ],
   preview: {
     select: {
