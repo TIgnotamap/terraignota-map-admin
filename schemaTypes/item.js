@@ -644,7 +644,7 @@ export default defineType({
     }),
 
     defineField({
-      name: 'isHightlighted',
+      name: 'isHighlighted',
       title: 'Highlight',
       type: 'boolean',
       initialValue: false,
