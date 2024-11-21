@@ -432,10 +432,7 @@ export default defineType({
         },
       ],
       hidden: ({document}) =>
-        !document?.template ||
-        document?.template === '1' ||
-        document?.template === '2' ||
-        document?.template === '3',
+        !document?.template || document?.template === '1' || document?.template === '3',
     }),
 
     defineField({
