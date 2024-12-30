@@ -445,11 +445,6 @@ export default defineType({
           title: 'URL',
           type: 'url',
         }),
-        defineField({
-          name: 'file',
-          title: 'File',
-          type: 'file',
-        }),
       ],
       hidden: ({document}) => !document?.template || document?.template === '1',
     }),

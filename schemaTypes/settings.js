@@ -54,7 +54,7 @@ export default defineType({
       title: 'Background Audios',
       description: '8 files max',
       type: 'array',
-      of: [{type: 'file'}],
+      of: [{type: 'url'}],
       validation: (Rule) => Rule.max(8),
     }),
 
