@@ -88,6 +88,57 @@ export default defineType({
       title: 'Link',
       type: 'url',
     }),
+
+    defineField({
+      name: 'credits',
+      title: 'Credits',
+      type: 'array',
+      of: [
+        {
+          name: 'credit',
+          type: 'object',
+          fields: [
+            {
+              name: 'role',
+              title: 'Role',
+              type: 'object',
+              options: {columns: 2},
+              fields: [
+                {
+                  name: 'es',
+                  title: 'Español',
+                  type: 'string',
+                  validation: (Rule) => Rule.required(),
+                },
+                {
+                  name: 'en',
+                  title: 'English',
+                  type: 'string',
+                  validation: (Rule) => Rule.required(),
+                },
+              ],
+            },
+            {
+              name: 'subjects',
+              title: 'Subjects',
+              type: 'array',
+              of: [
+                {
+                  type: 'reference',
+                  to: [{type: 'person'}, {type: 'organization'}],
+                  validation: (Rule) => Rule.required(),
+                },
+              ],
+            },
+          ],
+          preview: {
+            select: {
+              title: 'role.en',
+            },
+          },
+        },
+      ],
+    }),
   ],
   preview: {
     select: {
