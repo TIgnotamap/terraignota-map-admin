@@ -69,13 +69,6 @@ export default defineType({
           type: 'object',
           fields: [
             {
-              name: 'subject',
-              title: 'Subject',
-              type: 'reference',
-              to: [{type: 'person'}, {type: 'organization'}],
-              validation: (Rule) => Rule.required(),
-            },
-            {
               name: 'role',
               title: 'Role',
               type: 'object',
@@ -94,13 +87,23 @@ export default defineType({
                   validation: (Rule) => Rule.required(),
                 },
               ],
-              validation: (Rule) => Rule.required(),
+            },
+            {
+              name: 'subjects',
+              title: 'Subjects',
+              type: 'array',
+              of: [
+                {
+                  type: 'reference',
+                  to: [{type: 'person'}, {type: 'organization'}],
+                  validation: (Rule) => Rule.required(),
+                },
+              ],
             },
           ],
           preview: {
             select: {
-              title: 'person.name',
-              subtitle: 'role.en',
+              title: 'role.en',
             },
           },
         },
