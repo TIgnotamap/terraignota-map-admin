@@ -78,8 +78,6 @@ export default defineType({
               type: 'array',
               of: [
                 {
-                  name: 'value',
-                  title: 'Value',
                   type: 'object',
                   fields: [
                     {
