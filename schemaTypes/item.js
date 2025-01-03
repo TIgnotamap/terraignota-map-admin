@@ -495,13 +495,6 @@ export default defineType({
           type: 'object',
           fields: [
             {
-              name: 'subject',
-              title: 'Subject',
-              type: 'reference',
-              to: [{type: 'person'}, {type: 'organization'}],
-              validation: (Rule) => Rule.required(),
-            },
-            {
               name: 'role',
               title: 'Role',
               type: 'object',
@@ -521,27 +514,22 @@ export default defineType({
                 },
               ],
             },
+            {
+              name: 'subjects',
+              title: 'Subjects',
+              type: 'array',
+              of: [
+                {
+                  type: 'reference',
+                  to: [{type: 'person'}, {type: 'organization'}],
+                  validation: (Rule) => Rule.required(),
+                },
+              ],
+            },
           ],
           preview: {
             select: {
-              orgEn: 'subject.name.en',
-              orgEs: 'subject.name.es',
-              firstName: 'subject.firstName',
-              lastName: 'subject.lastName',
-              pseudonym: 'subject.pseudonym',
-              subtitle: 'role.en',
-            },
-            prepare(selection) {
-              const {orgEn, orgEs, pseudonym, firstName, lastName} = selection
-              if (!orgEn && !orgEs && !firstName && !lastName && !pseudonym) {
-                return {
-                  title: 'Unknown',
-                }
-              }
-              return {
-                title: `${orgEn ? `${orgEn} ` : orgEs ? `${orgEs} ` : ''} ${firstName ? `${firstName} ` : ''} ${lastName ? `${lastName}` : ''} ${pseudonym ? `${pseudonym} ` : ''}`,
-                subtitle: selection.subtitle,
-              }
+              title: 'role.en',
             },
           },
         },
