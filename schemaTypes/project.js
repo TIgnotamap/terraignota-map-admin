@@ -44,6 +44,71 @@ export default defineType({
       },
       validation: (Rule) => Rule.required(),
     }),
+
+    defineField({
+      name: 'properties',
+      type: 'array',
+      title: 'Properties',
+      of: [
+        {
+          type: 'object',
+          icon: () => '📜',
+          fields: [
+            {
+              name: 'propName',
+              title: 'Property Name',
+              type: 'object',
+              options: {columns: 2},
+              fields: [
+                {
+                  name: 'es',
+                  title: 'Español',
+                  type: 'string',
+                },
+                {
+                  name: 'en',
+                  title: 'English',
+                  type: 'string',
+                },
+              ],
+            },
+            {
+              name: 'propValues',
+              title: 'Property Value/s',
+              type: 'array',
+              of: [
+                {
+                  name: 'value',
+                  title: 'Value',
+                  type: 'object',
+                  fields: [
+                    {
+                      name: 'es',
+                      title: 'Español',
+                      type: 'string',
+                      validation: (rule) => rule.max(50),
+                    },
+                    {
+                      name: 'en',
+                      title: 'English',
+                      type: 'string',
+                      validation: (rule) => rule.max(50),
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+          preview: {
+            select: {
+              title: 'propName.en',
+              subtitle: 'propValues[0].en',
+            },
+          },
+        },
+      ],
+    }),
+
     defineField({
       name: 'description',
       title: 'Description',
