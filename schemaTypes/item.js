@@ -106,8 +106,6 @@ export default defineType({
           type: 'string',
         },
       ],
-      hidden: ({document}) =>
-        !document?.template || document?.template === '2' || document?.template === '3',
     }),
 
     defineField({
