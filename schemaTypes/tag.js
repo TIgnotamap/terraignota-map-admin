@@ -43,6 +43,13 @@ export default defineType({
         }),
       ],
     }),
+
+    defineField({
+      name: 'geographic',
+      title: 'Geographic',
+      type: 'boolean',
+      description: 'Is this tag related to a geographic location?',
+    }),
   ],
   preview: {
     select: {
