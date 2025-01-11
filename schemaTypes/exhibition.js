@@ -4,6 +4,7 @@ export default defineType({
   name: 'exhibition',
   title: 'Exhibition',
   type: 'document',
+  fieldsets: [{name: 'coordinates', title: 'Coordinates', options: {columns: 2}}],
   fields: [
     defineField({
       name: 'title',
@@ -53,6 +54,29 @@ export default defineType({
           type: 'text',
         }),
       ],
+    }),
+
+    defineField({
+      name: 'lat',
+      title: 'Lat',
+      type: 'number',
+      fieldset: 'coordinates',
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
+      name: 'long',
+      title: 'Long',
+      type: 'number',
+      fieldset: 'coordinates',
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
+      name: 'gps',
+      title: 'GPS',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
